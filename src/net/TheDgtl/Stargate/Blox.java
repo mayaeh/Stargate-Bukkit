@@ -134,7 +134,7 @@ public class Blox {
 			} else if (getData() == 0x5) {
 				offsetX = -1;
 			}
-		} else if (getBlock().getType() == Material.SIGN_POST) {
+		} else if (getBlock().getType() == Material.SIGN) { // 誤動作するかも？
 			offsetY = -1;
 		} else {
 			return;

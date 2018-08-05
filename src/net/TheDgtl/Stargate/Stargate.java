@@ -1012,7 +1012,7 @@ public class Stargate extends JavaPlugin {
 			Portal portal = null;
 			
 			// Handle keeping portal material and buttons around
-			if (block.getType() == Material.PORTAL) {
+			if (block.getType() == Material.NETHER_PORTAL) {
 				portal = Portal.getByEntrance(block);
 			} else if (block.getType() == Material.STONE_BUTTON) {
 				portal = Portal.getByControl(block);

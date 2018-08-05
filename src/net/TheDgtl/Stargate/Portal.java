@@ -24,6 +24,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
+//import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.minecart.StorageMinecart;
@@ -692,7 +693,7 @@ public class Portal {
 
 	public final void drawSign() {
 		Material sMat = id.getBlock().getType();
-		if (sMat != Material.SIGN && sMat != Material.WALL_SIGN && sMat != Material.SIGN_POST) {
+		if (sMat != Material.SIGN && sMat != Material.WALL_SIGN) {
 			Stargate.log.warning("[Stargate] Sign block is not a Sign object");
 			Stargate.debug("Portal::drawSign", "Block: " + id.getBlock().getType() + " @ " + id.getBlock().getLocation());
 			return;
@@ -1355,7 +1356,7 @@ public class Portal {
 							// DEBUG
 							for (RelativeBlockVector control : portal.getGate().getControls()) {
 								if (!portal.getBlockAt(control).getBlock().getType().equals(portal.getGate().getControlBlock())) {
-									Stargate.debug("loadAllGates", "Control Block Type == " + portal.getBlockAt(control).getBlock().getTypeId());
+									Stargate.debug("loadAllGates", "Control Block Type == " + portal.getBlockAt(control).getBlock().getType().name());
 								}
 							}
 							portal.unregister(false);

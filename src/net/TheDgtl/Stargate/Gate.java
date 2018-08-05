@@ -51,7 +51,7 @@ public class Gate {
 	private RelativeBlockVector[] controls = new RelativeBlockVector[0];
 	private RelativeBlockVector exitBlock = null;
 	private HashMap<RelativeBlockVector, Integer> exits = new HashMap<>();
-	private Material portalBlockOpen = Material.PORTAL;
+	private Material portalBlockOpen = Material.NETHER_PORTAL;
 	private Material portalBlockClosed = Material.AIR;
 	
 	// Economy information
@@ -261,14 +261,14 @@ public class Gate {
 					
 					if (type != portalBlockClosed && type != portalBlockOpen) {
 						// Special case for water gates
-						if (portalBlockOpen == Material.WATER || portalBlockOpen == Material.STATIONARY_WATER) {
-							if (type == Material.WATER || type == Material.STATIONARY_WATER) {
+						if (portalBlockOpen == Material.WATER) {
+							if (type == Material.WATER) {
 								continue;
 							}
 						}
 						// Special case for lava gates
-						if (portalBlockOpen == Material.LAVA || portalBlockOpen == Material.STATIONARY_LAVA) {
-							if (type == Material.LAVA || type == Material.STATIONARY_LAVA) {
+						if (portalBlockOpen == Material.LAVA) {
+							if (type == Material.LAVA) {
 								continue;
 							}
 						}
