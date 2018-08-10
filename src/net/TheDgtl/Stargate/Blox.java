@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.BlockData;
 
 /**
  * Stargate - A portal plugin for Bukkit
@@ -85,12 +87,20 @@ public class Blox {
 		return world.getBlockAt(x, y, z).getType();
 	}
 
-	public void setData(int data) {
-		world.getBlockAt(x, y, z).setData((byte)data);
+//	public void setData(int data) {
+//		world.getBlockAt(x, y, z).setData((byte)data);
+//	}
+
+	public void setBlockData(BlockData data) {
+		world.getBlockAt(x, y, z).setBlockData((BlockData)data);
 	}
 
 	public int getData() {
-		return world.getBlockAt(x, y, z).getData();
+		return world.getBlockAt(x, y, z).getData(); // TODO: Deprecated
+	}
+
+	public BlockData getBlockData() {
+		return world.getBlockAt(x, y, z).getBlockData();
 	}
 
 	public Block getBlock() {
@@ -125,13 +135,13 @@ public class Blox {
 		int offsetZ = 0;
 		
 		if (getBlock().getType() == Material.WALL_SIGN) {
-			if (getData() == 0x2) {
+			if (getData() == 0x2) { // north TODO: get WALL_SIGN direction
 				offsetZ = 1;
-			} else if (getData() == 0x3) {
+			} else if (getData() == 0x3) { // south
 				offsetZ = -1;
-			} else if (getData() == 0x4) {
+			} else if (getData() == 0x4) { // west
 				offsetX = 1;
-			} else if (getData() == 0x5) {
+			} else if (getData() == 0x5) { // east
 				offsetX = -1;
 			}
 		} else if (getBlock().getType() == Material.SIGN) { // 誤動作するかも？
