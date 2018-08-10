@@ -1122,7 +1122,7 @@ public class Stargate extends JavaPlugin {
 				if (b == null) return;
 				b.getBlox().getBlock().setType(b.getMat(), false);
 //				b.getBlox().getBlock().setData(b.getData(), false);
-				b.getBlox().getBlock().setBlockData(b.getBlockData(), false); // TODO:
+//				b.getBlox().getBlock().setBlockData(b.getBlockData(), false); // TODO:
 			}
 		}
 	}
