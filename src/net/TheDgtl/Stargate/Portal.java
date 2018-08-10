@@ -24,7 +24,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
-//import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.minecart.StorageMinecart;
@@ -498,7 +498,7 @@ public class Portal {
 		
 		// Get new velocity
 		final Vector newVelocity = new Vector();
-		switch (id.getBlock().getData()) {
+		switch (id.getBlock().getData()) { // TODO:
 			case 2:
 				newVelocity.setZ(-1);
 				break;
@@ -953,24 +953,29 @@ public class Portal {
 		int modX = 0;
 		int modZ = 0;
 		float rotX = 0f;
-		int facing = 0;
+//		int facing = 0; // DOWN  TODO: facing
+		String strBlockData = "minecraft:stone_button[face=wall,facing=down,powered=false]";
 
 		if (idParent.getX() > id.getBlock().getX()) {
 			modZ -= 1;
 			rotX = 90f;
-			facing = 2;
+//			facing = 2; // WEST
+			strBlockData = "minecraft:stone_button[face=wall,facing=west,powered=false]";
 		} else if (idParent.getX() < id.getBlock().getX()) {
 			modZ += 1;
 			rotX = 270f;
-			facing = 1;
+//			facing = 1; // EAST
+			strBlockData = "minecraft:stone_button[face=wall,facing=east,powered=false]";
 		} else if (idParent.getZ() > id.getBlock().getZ()) {
 			modX += 1;
 			rotX = 180f;
-			facing = 4;
+//			facing = 4; // NORTH
+			strBlockData = "minecraft:stone_button[face=wall,facing=north,powered=false]";
 		} else if (idParent.getZ() < id.getBlock().getZ()) {
 			modX -= 1;
 			rotX = 0f;
-			facing = 3;
+//			facing = 3; // SOUTH
+			strBlockData = "minecraft:stone_button[face=wall,facing=south,powered=false]";
 		}
 
 		Gate[] possibleGates = Gate.getGatesByControlBlock(idParent);
@@ -1145,8 +1150,10 @@ public class Portal {
 		// No button on an always-open gate.
 		if (!alwaysOn) {
 			button = topleft.modRelative(buttonVector.getRight(), buttonVector.getDepth(), buttonVector.getDistance() + 1, modX, 1, modZ);
-			button.setType(Material.STONE_BUTTON);
-			button.setData(facing);
+//			button.setType(Material.STONE_BUTTON);
+//			button.setData(facing);
+			BlockData btnBlockData = Material.STONE_BUTTON.createBlockData(strBlockData); // TODO: button
+			button.setBlockData(btnBlockData);
 			portal.setButton(button);
 		}
 		
