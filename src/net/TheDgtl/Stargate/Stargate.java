@@ -1090,7 +1090,8 @@ public class Stargate extends JavaPlugin {
 				if (destroyExplosion) {
 					portal.unregister(true);
 				} else {
-					Stargate.blockPopulatorQueue.add(new BloxPopulator(new Blox(b), b.getType(), b.getData()));
+					//Stargate.blockPopulatorQueue.add(new BloxPopulator(new Blox(b), b.getType(), b.getData()));
+					Stargate.blockPopulatorQueue.add(new BloxPopulator(new Blox(b), b.getType(), b.getBlockData()));
 					event.setCancelled(true);
 				}
 			}
@@ -1120,7 +1121,8 @@ public class Stargate extends JavaPlugin {
 				BloxPopulator b = Stargate.blockPopulatorQueue.poll();
 				if (b == null) return;
 				b.getBlox().getBlock().setType(b.getMat(), false);
-				b.getBlox().getBlock().setData(b.getData(), false);
+//				b.getBlox().getBlock().setData(b.getData(), false);
+				b.getBlox().getBlock().setBlockData(b.getBlockData(), false); // TODO:
 			}
 		}
 	}
