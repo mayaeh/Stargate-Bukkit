@@ -25,6 +25,8 @@ import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.Directional;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -844,7 +846,7 @@ public class Stargate extends JavaPlugin {
 
 			// Right click
 			if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-				if (block.getType() == Material.WALL_SIGN) {
+				if (block.getType() == Material.WALL_SIGN) { // TODO:
 					Portal portal = Portal.getByBlock(block);
 					if (portal == null) return;
 					// Cancel item use
@@ -868,8 +870,14 @@ public class Stargate extends JavaPlugin {
 				}
 
 				// Implement right-click to toggle a stargate, gets around spawn protection problem.
-				if ((block.getType() == Material.STONE_BUTTON)) {
+				if ((block.getType() == Material.STONE_BUTTON)) { // TODO: Direction
 					Portal portal = Portal.getByBlock(block);
+//					if (block.getBlockData() instanceof Directional) {
+//						BlockFace btnFace = ((Directional) block.getBlockData()).getFacing();
+//					}
+//					else {
+//						BlockFace btnFace = BlockFace.EAST;
+//					}
 					if (portal == null) return;
 					
 					// Cancel item use
@@ -1123,6 +1131,13 @@ public class Stargate extends JavaPlugin {
 				b.getBlox().getBlock().setType(b.getMat(), false);
 //				b.getBlox().getBlock().setData(b.getData(), false);
 //				b.getBlox().getBlock().setBlockData(b.getBlockData(), false); // TODO:
+//				if (b.getBlox().getBlock().getBlockData() instanceof Directional) { // run only when contain Directional instance
+//					BlockFace bFace = ((Directional) b.getBlox().getBlock().getBlockData()).getFacing();
+//					Stargate.debug("BlockPopulatorThread", "getFacing: " + bFace.toString());
+//				}
+//				else {
+//					Stargate.debug("BlockPopulatorThread", "Don't contain Directional instance. Mat: " + b.getMat().toString());
+//				}
 			}
 		}
 	}

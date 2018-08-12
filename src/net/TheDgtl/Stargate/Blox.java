@@ -135,7 +135,7 @@ public class Blox {
 		int offsetZ = 0;
 		
 		if (getBlock().getType() == Material.WALL_SIGN) {
-			if (getData() == 0x2) { // north TODO: get WALL_SIGN direction
+			if (getData() == 0x2) { // north TODO: get WALL_SIGN or STONE_BUTTON direction
 				offsetZ = 1;
 			} else if (getData() == 0x3) { // south
 				offsetZ = -1;

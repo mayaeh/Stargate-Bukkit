@@ -352,7 +352,7 @@ public class Portal {
 	}
 
 	public boolean open(boolean force) {
-		return open(null, force);
+		return open(null, force); // TODO:
 	}
 
 	public boolean open(Player openFor, boolean force) {
